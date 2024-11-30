@@ -18,3 +18,4 @@ data.set_index('date', inplace=True)
 weekly_sales = data.groupby('product_id').resample('W')['sales'].sum().reset_index()
 
 print(weekly_sales)
+# commit
