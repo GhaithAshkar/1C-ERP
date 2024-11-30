@@ -1,7 +1,5 @@
 import pandas as pd
 
-import pandas as pd
-# first comment
 # Sample daily sales data
 data = pd.DataFrame({
     'date': ['2024-11-10', '2024-11-11', '2024-11-12', '2024-11-13', '2024-11-14', '2024-11-15', '2024-11-16',
