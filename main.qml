@@ -1,31 +1,49 @@
-import QtQuick 2.15
-import QtQuick.Controls 2.15
+import QtQuick
+import QtQuick.Controls
+import QtQuick.Layouts
 import QtQuick.Dialogs
 
 ApplicationWindow {
     visible: true
-    width: 400
-    height: 200
-    title: "Multiple Excel Files Uploader"
+    width: 1200
+    height: 800
+    title: "Product Sales Analyzer"
 
     FileDialog {
         id: fileDialog
-        title: "Choose Excel Files"
         nameFilters: ["Excel files (*.xlsx)"]
         fileMode: FileDialog.OpenFiles
-
         onAccepted: {
-            backend.readFiles(selectedFiles.join(','))
+            backend.readFiles(selectedFiles.toString())
         }
     }
 
-    Column {
-        anchors.centerIn: parent
+    ColumnLayout {
+        anchors.fill: parent
+        anchors.margins: 10
         spacing: 10
 
         Button {
-            text: "Upload Excel Files"
+            Layout.fillWidth: true
+            text: "Select Excel Files (Select all 12 months)"
             onClicked: fileDialog.open()
+            height: 40
+        }
+
+        ScrollView {
+            Layout.fillWidth: true
+            Layout.fillHeight: true
+            clip: true
+
+            TextArea {
+                width: parent.width
+                text: backend.summary
+                readOnly: true
+                wrapMode: TextArea.Wrap
+                font.family: "Consolas"
+                font.pointSize: 10
+                selectByMouse: true
+            }
         }
     }
 }
