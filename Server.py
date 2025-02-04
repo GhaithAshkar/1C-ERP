@@ -247,7 +247,7 @@ if __name__ == "__main__":
     backend = Backend()
 
     engine.rootContext().setContextProperty("backend", backend)
-    engine.load("main.qml")
+    engine.load("RL12M.qml")
 
     if not engine.rootObjects():
         sys.exit(-1)
